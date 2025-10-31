@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'soundwave.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL", "postgresql://neondb_owner:npg_n5lpoasqyJ4E@ep-royal-breeze-agnh4ko1.c-2.eu-central-1.aws.neon.tech/limb_drab_thud_900842" ))
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
 
