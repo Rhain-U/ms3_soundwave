@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^3g0&s-q$5gsomanf$h)6x0(p0&@5#74+!et-(qw*p7@39n=+='
+SECRET_KEY = '(django-insecure-^3g0&s-q$5gsomanf$h)6x0(p0&@5#74+!et-(qw*p7@39n=+='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -84,7 +84,10 @@ DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://postgresql://neondb_owner:npg_n5lpoasqyJ4E@ep-royal-breeze-agnh4ko1.c-2.eu-central-1.aws.neon.tech/limb_drab_thud_900842.codeinstitute-ide.net/",
+    "https://postgresql://neondb_owner:npg_n5lpoasqyJ4E@ep-royal-breeze-agnh4ko1.c-2.eu-central-1.aws.neon.tech/limb_drab_thud_900842.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
