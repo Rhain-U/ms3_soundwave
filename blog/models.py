@@ -15,6 +15,15 @@ class Event_Post(models.Model):
     status = models.IntegerField(choices= STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
 
+class Comment(models.Model):
+    comment_id = models.AutoField(primary_key= True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    content = models.TextField(max_length=500)
+    created_on = models.DateTimeField(auto_now_add=True)
+    slug = models.SlugField(max_length = 200)
+    status = models.IntegerField(choices = STATUS, default = 0)
+
+
 
 
  
