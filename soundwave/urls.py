@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog.views import my_blog
+from blog.views import Blogpost_like, Event_Post_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', my_blog, name = 'blog'),
+    path('like/<int:post_id>/', Blogpost_like, name='Blogpost_like'),
+    path('post/<int:post_id>/', Event_Post_detail.as_view(), name='Event_Post_detail'),
 ]
