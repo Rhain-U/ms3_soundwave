@@ -5,7 +5,7 @@ STATUS = ((0,"Draft"), (1,"Published"))
 
 # Create your models here.
 class Event_Post(models.Model):
-    event_id = models.AutoField(primary_key=True)
+    post_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name = "event_post")
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -17,11 +17,14 @@ class Event_Post(models.Model):
 
 class Comment(models.Model):
     comment_id = models.AutoField(primary_key=True)
-    event_id = models.ForeignKey(Event_Post, on_delete=models.CASCADE, related_name="comments")
+    post_id = models.ForeignKey(Event_Post, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name = "comment_author")
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
+class Like(models.Model):
+    likes = models.ManyToManyField(User, related_name= "Blogpost_like")
 
-    
+    def number_of_likes(self):
+        return self.likes.count()
